@@ -139,10 +139,80 @@ async function submitBooking(){
   $('submitBtn').disabled=false;
   $('submitBtn').textContent='Enviar solicitud de reserva';
  }
+} 
+ async function login(){
+ const email=$('email').value.trim();
+ const password=$('password').value;
+ const {data,error}=await sb.auth.signInWithPassword({email,password});
+ if(error){
+  msg('loginMsg','No se pudo iniciar sesión. Revisa el correo y la contraseña.');
+  return;
+ }
+ if(data.user.email!=='eltrencitodelossuenos@gmail.com'){
+  await sb.auth.signOut();
+  msg('loginMsg','Este correo no tiene acceso de administración.');
+  return;
+ }
+ await checkSession();
 }
 async function checkSession(){const {data}=await sb.auth.getSession();const user=data.session?.user;if(user&&user.email==='eltrencitodelossuenos@gmail.com'){$('loginBox').classList.add('hidden');$('adminBox').classList.remove('hidden');$('signedInAs').textContent=user.email;await loadBookings()}else{$('loginBox').classList.remove('hidden');$('adminBox').classList.add('hidden')}}
 async function logout(){await sb.auth.signOut();checkSession()}
-async function loadBookings(){const {data,error}=await sb.from('reserva').select('*').order('created_at',{ascending:false});if(error){$('bookingList').textContent='No se pudieron cargar las solicitudes: '+error.message;return}const list=data||[];$('count').textContent=list.length;$('bookingList').innerHTML='';if(!list.length){$('bookingList').innerHTML='<p class="small">Todavía no hay solicitudes.</p>';return}for(const b of list){const el=document.createElement('div');el.className='item';const when=new Date(b.fecha_hora_inicio);const date=when.toLocaleDateString('es-CL');const time=when.toLocaleTimeString('es-CL',{hour:'2-digit',minute:'2-digit'});let proof='';if(b.comprobante_path){const {data:signed}=await sb.storage.from('comprobantes').createSignedUrl(b.comprobante_path,300);if(signed?.signedUrl)proof=`<p><a href="${signed.signedUrl}" target="_blank" rel="noopener">Ver comprobante</a></p>`}const state=b.estado;el.innerHTML=`<div class="row"><b>${esc(b.nombre)}</b><span class="pill ${state==='aprobada'?'ok':state==='rechazada'?'no':''}">${esc(state)}</span></div><p class="small">${esc(date)} · ${esc(time)} · ${esc(String(b.duracion_horas))} hora(s)</p><div>${esc(b.tipo_evento)} · ${esc(b.comuna)}</div><div class="small">${esc(b.telefono)} · ${esc(b.direccion_evento)}</div>${proof}<div class="actions"><button class="btn" style="background:#17632e" ${state==='aprobada'?'disabled':''} onclick="setStatus('${b.id}','aprobada')">Aprobar abono</button><button class="btn" style="background:#8d2025" ${state==='rechazada'?'disabled':''} onclick="setStatus('${b.id}','rechazada')">Rechazar</button></div>`;$('bookingList').appendChild(el)}}
+async function loadBookings(){
+ const {data,error}=await sb.from('reserva')
+  .select('*')
+  .order('created_at',{ascending:false});
+
+ if(error){
+  $('bookingList').textContent='Error: '+error.message;
+  return;
+ }
+
+ const list=data||[];
+ $('count').textContent=list.length;
+ $('bookingList').innerHTML='';
+
+ if(!list.length){
+  $('bookingList').innerHTML='<p class="small">Todavía no hay solicitudes.</p>';
+  return;
+ }
+
+ for(const b of list){
+  const el=document.createElement('div');
+  el.className='item';
+
+  const date=b.fecha_evento||'';
+  const time=b['hora evento']||'';
+  const hours=b['horas contratadas']||'';
+  const state=b.estado||'pendiente';
+
+  let proof='';
+  if(b.comprobante_path){
+   const {data:signed}=await sb.storage
+    .from('comprobantes')
+    .createSignedUrl(b.comprobante_path,300);
+
+   if(signed?.signedUrl){
+    proof=`<p><a href="${signed.signedUrl}" target="_blank" rel="noopener">Ver comprobante</a></p>`;
+   }
+  }
+
+  el.innerHTML=`
+   <div class="row">
+    <b>${esc(b.nombre)}</b>
+    <span class="pill ${state==='aprobada'?'ok':state==='rechazada'?'no':''}">${esc(state)}</span>
+   </div>
+   <p class="small">${esc(date)} · ${esc(time)} · ${esc(String(hours))} hora(s)</p>
+   <div>${esc(b.tipo_evento)}</div>
+   <div class="small">${esc(b.telefono)} · ${esc(b['dirección evento y comuna'])}</div>
+   <div>Abono: $${esc(b.abono)}</div>
+   ${proof}
+   <div class="actions">
+    <button class="btn" style="background:#17632e" ${state==='aprobada'?'disabled':''} onclick="setStatus('${b.id}','aprobada')">Aprobar abono</button>
+    <button class="btn" style="background:#8d2025" ${state==='rechazada'?'disabled':''} onclick="setStatus('${b.id}','rechazada')">Rechazar</button>
+   </div>`;
+  $('bookingList').appendChild(el);
+ }
+}
 async function setStatus(id,status){const {error}=await sb.from('reserva').update({estado:status}).eq('id',id);if(error){alert('No se pudo actualizar: '+error.message);return}await loadBookings();await renderSlots()}
 function esc(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
 const today=new Date();$('date').min=localDate(today);$('date').value=$('date').min;$('date').addEventListener('change',renderSlots);$('duration').addEventListener('change',renderSlots);renderSlots();sb.auth.onAuthStateChange(()=>{if(!$('admin').classList.contains('hidden'))checkSession()});
