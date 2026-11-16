@@ -5,247 +5,99 @@
 <title>El Trencito de los Sueños | Reservas</title>
 <link rel="manifest" href="manifest.webmanifest"><link rel="apple-touch-icon" href="icon-192.png">
 <style>
-:root{--ink:#242a30;--red:#8d2025;--gold:#d7ad55;--cream:#fffaf0;--muted:#746d62;--line:#e7dcc8}*{box-sizing:border-box}body{margin:0;background:#f4efe5;color:var(--ink);font:16px system-ui,-apple-system,Segoe UI,sans-serif}header{background:linear-gradient(135deg,#20262c,#3b2424);color:#fff;padding:22px 18px;text-align:center;border-bottom:5px solid var(--gold)}.brand{font-family:Georgia,serif;color:#f1cf7b;font-size:clamp(25px,6vw,38px);font-weight:bold}.sub{letter-spacing:2px;font-size:11px;color:#f6e8c8;margin-top:6px}.train{font-size:42px;margin:5px}main{max-width:760px;margin:18px auto;padding:0 14px 40px}.tabs{display:flex;gap:8px;margin:14px 0}.tabs button,.btn{border:0;border-radius:10px;padding:12px 15px;font-weight:700;cursor:pointer}.tabs button{flex:1;background:#e4d8c3;color:#3b3027}.tabs button.active,.btn.primary{background:var(--red);color:white}.panel{background:white;border:1px solid var(--line);border-radius:16px;padding:18px;box-shadow:0 4px 18px #392a1510}h2{font-family:Georgia,serif;margin:0 0 6px;color:#6e1d22}p.hint{color:var(--muted);font-size:14px;margin:0 0 16px}label{display:block;font-size:13px;font-weight:700;margin:12px 0 5px}input,select{width:100%;padding:12px;border:1px solid #d8cbb6;border-radius:9px;background:#fff;font:inherit}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.slot{padding:10px 3px;border:1px solid #d9c9ac;background:#fffaf0;border-radius:9px;color:#342b22;font-weight:700}.slot.selected{background:var(--gold);border-color:#a77b2c}.slot:disabled{background:#eee;color:#999;text-decoration:line-through}.notice{background:#fff4dc;border:1px solid #e7c77f;padding:12px;border-radius:10px;font-size:14px;margin:12px 0}.bank{background:#272d33;color:white;padding:15px;border-radius:12px;margin:14px 0}.bank strong{color:#f0ca72}.bank .amount{font:bold 28px Georgia;color:#f0ca72;margin:5px 0}.btn{width:100%;margin-top:14px;background:#302d29;color:#fff}.btn:disabled{opacity:.45;cursor:not-allowed}.item{border:1px solid var(--line);padding:13px;border-radius:11px;margin:10px 0}.row{display:flex;justify-content:space-between;gap:8px;align-items:center;flex-wrap:wrap}.pill{font-size:12px;padding:5px 9px;border-radius:30px;background:#fff0cf;color:#704c0c;font-weight:700}.pill.ok{background:#e0f3e6;color:#17632e}.pill.no{background:#f8e1e1;color:#8d2025}.small{font-size:13px;color:var(--muted)}footer{text-align:center;color:#766c5e;font-size:12px;padding:20px}a.whatsapp{display:block;text-align:center;background:#197a48;color:#fff;text-decoration:none;padding:12px;border-radius:10px;font-weight:700;margin-top:12px}.hidden{display:none!important}.actions{display:flex;gap:8px}.actions button{flex:1}@media(min-width:600px){.grid{grid-template-columns:repeat(4,1fr)}}
+:root{--ink:#242a30;--red:#8d2025;--gold:#d7ad55;--cream:#fffaf0;--muted:#746d62;--line:#e7dcc8}*{box-sizing:border-box}body{margin:0;background:#f4efe5;color:var(--ink);font:16px system-ui,-apple-system,Segoe UI,sans-serif}header{background:linear-gradient(135deg,#20262c,#3b2424);color:#fff;padding:22px 18px;text-align:center;border-bottom:5px solid var(--gold)}.brand{font-family:Georgia,serif;color:#f1cf7b;font-size:clamp(25px,6vw,38px);font-weight:bold}.sub{letter-spacing:2px;font-size:11px;color:#f6e8c8;margin-top:6px}.train{font-size:42px;margin:5px}.logo-custom{display:none;max-width:150px;max-height:100px;object-fit:contain;margin:0 auto 8px}.logo-custom.visible{display:block}main{max-width:760px;margin:18px auto;padding:0 14px 40px}.tabs{display:flex;gap:8px;margin:14px 0}.tabs button,.btn{border:0;border-radius:10px;padding:12px 15px;font-weight:700;cursor:pointer}.tabs button{flex:1;background:#e4d8c3;color:#3b3027}.tabs button.active,.btn.primary{background:var(--red);color:white}.panel{background:white;border:1px solid var(--line);border-radius:16px;padding:18px;box-shadow:0 4px 18px #392a1510}h2{font-family:Georgia,serif;margin:0 0 6px;color:#6e1d22}p.hint{color:var(--muted);font-size:14px;margin:0 0 16px}label{display:block;font-size:13px;font-weight:700;margin:12px 0 5px}input,select,textarea{width:100%;padding:12px;border:1px solid #d8cbb6;border-radius:9px;background:#fff;font:inherit}textarea{min-height:80px;resize:vertical}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.slot{padding:10px 3px;border:1px solid #d9c9ac;background:#fffaf0;border-radius:9px;color:#342b22;font-weight:700}.slot.selected{background:var(--gold);border-color:#a77b2c}.slot:disabled{background:#eee;color:#999;text-decoration:line-through}.notice{background:#fff4dc;border:1px solid #e7c77f;padding:12px;border-radius:10px;font-size:14px;margin:12px 0}.bank{background:#272d33;color:white;padding:15px;border-radius:12px;margin:14px 0}.bank strong{color:#f0ca72}.bank .amount{font:bold 28px Georgia;color:#f0ca72;margin:5px 0}.btn{width:100%;margin-top:14px;background:#302d29;color:#fff}.btn:disabled{opacity:.45;cursor:not-allowed}.item{border:1px solid var(--line);padding:13px;border-radius:11px;margin:10px 0}.row{display:flex;justify-content:space-between;gap:8px;align-items:center;flex-wrap:wrap}.pill{font-size:12px;padding:5px 9px;border-radius:30px;background:#fff0cf;color:#704c0c;font-weight:700}.pill.ok{background:#e0f3e6;color:#17632e}.pill.no{background:#f8e1e1;color:#8d2025}.small{font-size:13px;color:var(--muted)}.actions{display:flex;gap:8px;flex-wrap:wrap}.actions button{flex:1;min-width:120px}.hidden{display:none!important}a.whatsapp{display:block;text-align:center;background:#197a48;color:#fff;text-decoration:none;padding:12px;border-radius:10px;font-weight:700;margin-top:12px}.gallery-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:12px}.gallery-card{border:1px solid var(--line);padding:7px;border-radius:10px}.gallery-card img{width:100%;height:150px;object-fit:cover;border-radius:7px}.section-gap{margin-top:18px}.muted-line{border:0;border-top:1px solid var(--line);margin:20px 0}footer{text-align:center;color:#766c5e;font-size:12px;padding:20px}@media(min-width:600px){.grid{grid-template-columns:repeat(4,1fr)}.gallery-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
 </style>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
 <body>
-<header><div class="train">🚂</div><div class="brand">El Trencito de los Sueños</div><div class="sub">AGENDA DE RESERVAS · ESTILO FERROVIARIO</div></header>
+<header><img id="logoCustom" class="logo-custom" alt="Logo de El Trencito de los Sueños"><div id="trainEmoji" class="train">🚂</div><div class="brand">El Trencito de los Sueños</div><div class="sub">AGENDA DE RESERVAS · ESTILO FERROVIARIO</div></header>
 <main>
 <div class="tabs"><button id="tabClient" class="active" type="button" onclick="show('client')">Reservar</button><button id="tabAdmin" type="button" onclick="show('admin')">Administración</button></div>
 <section id="client" class="panel">
-<h2>Reserva tu paseo</h2><p class="hint">Solicita tu fecha y horario entre las 10:00 y las 22:00. La reserva queda pendiente hasta que revisemos tu comprobante.</p>
+<h2>Reserva tu paseo</h2><p class="hint">Solicita tu fecha y horario entre las 10:00 y las 22:00. La reserva queda pendiente hasta que revisemos tu solicitud.</p>
 <label for="date">Fecha del evento</label><input id="date" type="date">
 <label>Horario de inicio</label><div class="grid" id="slots"></div>
 <label for="name">Nombre completo</label><input id="name" autocomplete="name" placeholder="Tu nombre y apellido">
 <label for="phone">Teléfono</label><input id="phone" type="tel" autocomplete="tel" placeholder="+56 9...">
+<label for="emailClient">Correo electrónico (opcional)</label><input id="emailClient" type="email" autocomplete="email" placeholder="tu correo">
 <label for="commune">Comuna</label><input id="commune" placeholder="Comuna del evento">
 <label for="address">Dirección del evento</label><input id="address" placeholder="Calle y número">
 <label for="event">Tipo de celebración</label><select id="event"><option>Cumpleaños</option><option>Matrimonio</option><option>Graduación</option><option>Bautizo</option><option>Aniversario</option><option>Evento escolar</option><option>Evento empresarial</option><option>Otro</option></select>
 <label for="duration">Duración</label><select id="duration"><option value="1">1 hora</option><option value="2" selected>2 horas</option><option value="3">3 horas</option><option value="4">4 horas</option><option value="5">5 horas</option><option value="6">6 horas</option></select>
-<div class="bank"><div>ABONO PARA SOLICITAR LA RESERVA</div><div class="amount">$30.000 CLP</div><div><strong>Titular:</strong> Lissette Lorena Alarcón</div><div><strong>RUT:</strong> 17.379.436-3</div><div><strong>Banco:</strong> Banco Falabella</div><div><strong>Cuenta:</strong> Corriente · 1-984-224947-1</div><div><strong>Correo:</strong> lissette.am@live.cl</div></div>
-<label for="proof">Comprobante de transferencia (imagen o PDF, máximo 5 MB)</label><input id="proof" type="file" accept="image/*,.pdf">
-<div class="notice">Tu solicitud quedará <b>pendiente de revisión</b>. El horario no se confirma hasta que la administradora apruebe el abono. Si se rechaza, el horario vuelve a quedar disponible.</div>
+<label for="total">Valor total del servicio ($)</label><input id="total" type="number" min="0" step="1000" placeholder="Ej: 150000">
+<label for="deposit">Abono ($) · puedes ingresar 0</label><input id="deposit" type="number" min="0" step="1000" value="30000">
+<label for="observations">Observaciones (opcional)</label><textarea id="observations" placeholder="Información adicional del evento"></textarea>
+<div class="bank"><div>DATOS PARA TRANSFERENCIA</div><div class="amount">Abono acordado</div><div><strong>Titular:</strong> Lissette Lorena Alarcón</div><div><strong>RUT:</strong> 17.379.436-3</div><div><strong>Banco:</strong> Banco Falabella</div><div><strong>Cuenta:</strong> Corriente · 1-984-224947-1</div><div><strong>Correo:</strong> lissette.am@live.cl</div><div class="small" style="color:#f6e8c8;margin-top:8px">Si el abono es $0, no necesitas adjuntar comprobante.</div></div>
+<label for="proof">Comprobante de transferencia (imagen o PDF, máximo 5 MB; requerido si el abono es mayor que $0)</label><input id="proof" type="file" accept="image/*,.pdf">
+<div class="notice">Tu solicitud quedará <b>pendiente de revisión</b>. El horario no se confirma hasta que la administradora revise la solicitud. Entre eventos se reservan 30 minutos de traslado.</div>
 <button id="submitBtn" class="btn primary" type="button" onclick="submitBooking()">Enviar solicitud de reserva</button><div id="clientMsg" class="notice hidden" aria-live="polite"></div>
 <a class="whatsapp" href="https://wa.me/56949176696" target="_blank" rel="noopener">Consultar por WhatsApp</a>
 </section>
+<section id="publicGallery" class="panel section-gap"><h2>Galería de eventos</h2><p class="hint">Momentos y celebraciones junto a nuestro trencito.</p><div id="publicGalleryList" class="gallery-grid"><p class="small">Cargando fotografías...</p></div></section>
 <section id="admin" class="panel hidden">
 <div id="loginBox"><h2>Acceso de administración</h2><p class="hint">Ingresa con el correo administrador de El Trencito de los Sueños.</p><label for="email">Correo</label><input id="email" type="email" autocomplete="username" value="eltrencitodelossuenos@gmail.com"><label for="password">Contraseña</label><input id="password" type="password" autocomplete="current-password" placeholder="Tu contraseña de Supabase"><button class="btn primary" type="button" onclick="login()">Iniciar sesión</button><div id="loginMsg" class="notice hidden" aria-live="polite"></div></div>
-<div id="adminBox" class="hidden"><div class="row"><div><h2>Panel de administración</h2><p class="hint" id="signedInAs"></p></div><button class="btn" style="width:auto;margin:0" onclick="logout()">Cerrar sesión</button></div><div class="row"><b>Solicitudes</b><span class="pill" id="count">0</span></div><div id="bookingList"></div><button class="btn" onclick="loadBookings()">Actualizar solicitudes</button></div>
-</section>
+<div id="adminBox" class="hidden">
+<div class="row"><div><h2>Panel de administración</h2><p class="hint" id="signedInAs"></p></div><button class="btn" style="width:auto;margin:0" onclick="logout()">Cerrar sesión</button></div>
+<div class="row"><b>Solicitudes</b><span class="pill" id="count">0</span></div><div id="bookingList"></div><button class="btn" onclick="loadBookings()">Actualizar solicitudes</button>
+<hr class="muted-line">
+<div class="row"><b>Papelera de reservas</b><span class="pill" id="trashCount">0</span></div><div id="trashList"></div><button class="btn" onclick="loadTrash()">Actualizar papelera</button>
+<hr class="muted-line">
+<h2>Galería de eventos</h2><p class="hint">Sube fotografías para mostrarlas en la página. Formatos JPG, PNG o WEBP, máximo 5 MB.</p><label for="galleryFiles">Seleccionar fotografías</label><input id="galleryFiles" type="file" accept="image/jpeg,image/png,image/webp" multiple><button class="btn primary" onclick="uploadGallery()">Subir fotografías</button><div id="galleryAdminMsg" class="notice hidden"></div><div id="adminGalleryList" class="gallery-grid"></div>
+<hr class="muted-line">
+<h2>Cambiar logo</h2><p class="hint">Elige una imagen para reemplazar el logo que aparece en el encabezado.</p><label for="logoFile">Nuevo logo (JPG, PNG o WEBP; máximo 5 MB)</label><input id="logoFile" type="file" accept="image/jpeg,image/png,image/webp"><button class="btn" onclick="uploadLogo()">Guardar nuevo logo</button><div id="logoMsg" class="notice hidden"></div>
+</div></section>
 </main><footer>El Trencito de los Sueños · Cada celebración comienza con un viaje especial</footer>
 <script>
-// Configuración pública de Supabase. La clave publishable es apta para frontend; nunca colocar service_role aquí.
 const SUPABASE_URL='https://hsqsenrseujagrsntlve.supabase.co';
 const SUPABASE_ANON_KEY='sb_publishable_nFhd673R3iG__qt4YkXJVg_azymrL8y';
 const sb=window.supabase.createClient(SUPABASE_URL,SUPABASE_ANON_KEY);
+const ADMIN='eltrencitodelossuenos@gmail.com';
 const $=id=>document.getElementById(id);let selected='10:00';
 const hours=Array.from({length:13},(_,i)=>String(i+10).padStart(2,'0')+':00');
-function show(which){$('client').classList.toggle('hidden',which!=='client');$('admin').classList.toggle('hidden',which!=='admin');$('tabClient').classList.toggle('active',which==='client');$('tabAdmin').classList.toggle('active',which==='admin');if(which==='admin')checkSession();else renderSlots()}
+function show(which){$('client').classList.toggle('hidden',which!=='client');$('publicGallery').classList.toggle('hidden',which!=='client');$('admin').classList.toggle('hidden',which!=='admin');$('tabClient').classList.toggle('active',which==='client');$('tabAdmin').classList.toggle('active',which==='admin');if(which==='admin')checkSession();else renderSlots()}
 function msg(id,text){$(id).textContent=text;$(id).classList.remove('hidden')}
 function localDate(d){const x=new Date(d);return new Date(x.getTime()-x.getTimezoneOffset()*60000).toISOString().slice(0,10)}
-function dateTimeIso(date,time){return new Date(`${date}T${time}:00`).toISOString()}
 function duration(){return Number($('duration').value)}
 function fitsBusinessHours(time,hoursCount){const start=Number(time.slice(0,2));return start+hoursCount<=22}
-async function getBusy(){
- const date=$('date').value;
- if(!date)return[];
- const {data,error}=await sb.rpc('horarios_ocupados',{p_fecha:date});
- if(error){console.error(error);return null}
- return data||[];
-}
-
-async function renderSlots(){
- const d=$('date').value;
- const slots=$('slots');
- slots.innerHTML='';
- if(!d)return;
- slots.innerHTML='<span class="small">Consultando horarios...</span>';
- const busy=await getBusy();
- if(busy===null){
-  slots.innerHTML='<span class="small">No se pudieron consultar los horarios.</span>';
-  return;
- }
- slots.innerHTML='';
- hours.forEach(h=>{
-  const start=new Date(`${d}T${h}:00`).getTime();
-  const end=start+duration()*3600000;
-  const taken=busy.some(r=>{
-   const a=new Date(r.fecha_hora_inicio).getTime();
-   const b=a+Number(r.duracion_horas)*3600000;
-return start < b + 30*60000 && end + 30*60000 > a;
-  });
-  const btn=document.createElement('button');
-  btn.type='button';
-  btn.className='slot'+(selected===h?' selected':'');
-  btn.textContent=taken?'Ocupado':h;
-  btn.disabled=taken||!fitsBusinessHours(h,duration());
-  btn.onclick=()=>{selected=h;renderSlots()};
-  slots.appendChild(btn);
- });
-}
-
+async function getBusy(){const date=$('date').value;if(!date)return[];const {data,error}=await sb.rpc('horarios_ocupados',{p_fecha:date});if(error){console.error(error);return null}return data||[]}
+async function renderSlots(){const d=$('date').value;const slots=$('slots');slots.innerHTML='';if(!d)return;slots.innerHTML='<span class="small">Consultando horarios...</span>';const busy=await getBusy();if(busy===null){slots.innerHTML='<span class="small">No se pudieron consultar los horarios.</span>';return}slots.innerHTML='';hours.forEach(h=>{const start=new Date(`${d}T${h}:00`).getTime();const end=start+duration()*3600000;const taken=busy.some(r=>{const a=new Date(r.fecha_hora_inicio).getTime();const b=a+Number(r.duracion_horas)*3600000;return start < b+30*60000 && end+30*60000 > a});const btn=document.createElement('button');btn.type='button';btn.className='slot'+(selected===h?' selected':'');btn.textContent=taken?'Ocupado':h;btn.disabled=taken||!fitsBusinessHours(h,duration());btn.onclick=()=>{selected=h;renderSlots()};slots.appendChild(btn)})}
 async function submitBooking(){
- const required=['name','phone','commune','address'];
-
- if(required.some(id=>!$(id).value.trim())||!$('date').value||!$('proof').files.length){
-  msg('clientMsg','Completa tus datos, selecciona una fecha y adjunta el comprobante.');
-  return;
- }
-
- if(!fitsBusinessHours(selected,duration())){
-  msg('clientMsg','El horario elegido no alcanza a terminar antes de las 22:00.');
-  return;
- }
-
- const file=$('proof').files[0];
-
- if(file.size>5*1024*1024){
-  msg('clientMsg','El comprobante supera los 5 MB.');
-  return;
- }
-
- const ext=(file.name.split('.').pop()||'bin').toLowerCase().replace(/[^a-z0-9]/g,'');
- const path=`solicitudes/${crypto.randomUUID()}.${ext}`;
-
- $('submitBtn').disabled=true;
- $('submitBtn').textContent='Enviando solicitud...';
-
- let uploaded=false;
-
+ const required=['name','phone','commune','address','total'];
+ if(required.some(id=>!$(id).value.trim())||!$('date').value){msg('clientMsg','Completa nombre, teléfono, comuna, dirección, valor total y fecha.');return}
+ const total=Number($('total').value);const deposit=Number($('deposit').value||0);const file=$('proof').files[0];
+ if(!Number.isFinite(total)||!Number.isFinite(deposit)||total<0||deposit<0||deposit>total){msg('clientMsg','Revisa los montos: el abono no puede ser mayor que el valor total.');return}
+ if(deposit>0&&!file){msg('clientMsg','Adjunta el comprobante del abono o ingresa $0 si no corresponde abono.');return}
+ if(!fitsBusinessHours(selected,duration())){msg('clientMsg','El horario elegido no alcanza a terminar antes de las 22:00.');return}
+ if(file&&file.size>5*1024*1024){msg('clientMsg','El comprobante supera los 5 MB.');return}
+ const ext=file?(file.name.split('.').pop()||'bin').toLowerCase().replace(/[^a-z0-9]/g,''):'';const path=file?`solicitudes/${crypto.randomUUID()}.${ext}`:null;
+ $('submitBtn').disabled=true;$('submitBtn').textContent='Enviando solicitud...';let uploaded=false;
  try{
-  const upload=await sb.storage.from('comprobantes').upload(path,file,{
-   cacheControl:'3600',
-   upsert:false,
-   contentType:file.type||'application/octet-stream'
-  });
-
-  if(upload.error)throw upload.error;
-  uploaded=true;
-
-  const {data,error}=await sb.rpc('crear_reserva_segura',{
-   p_nombre:$('name').value.trim(),
-   p_telefono:$('phone').value.trim(),
-   p_direccion:$('address').value.trim()+' - '+$('commune').value.trim(),
-   p_tipo_evento:$('event').value,
-   p_fecha_evento:$('date').value,
-   p_hora_evento:selected,
-   p_horas_contratadas:duration(),
-   p_comprobante_path:path
-  });
-
-  if(error){
-   await sb.storage.from('comprobantes').remove([path]);
-   uploaded=false;
-   throw error;
-  }
-
-  msg('clientMsg','¡Solicitud enviada! Quedó pendiente de revisión.');
-
-  $('name').value='';
-  $('phone').value='';
-  $('commune').value='';
-  $('address').value='';
-  $('proof').value='';
-
-  await renderSlots();
-
- }catch(e){
-  console.error(e);
-
-  if(uploaded){
-   await sb.storage.from('comprobantes').remove([path]);
-  }
-
-  if(e.message?.includes('HORARIO_NO_DISPONIBLE')){
-   msg('clientMsg','Ese horario acaba de ser reservado. Por favor, elige otro.');
-   await renderSlots();
-  }else if(e.message?.includes('FUERA_DE_HORARIO')){
-   msg('clientMsg','El horario elegido no está permitido.');
-  }else{
-   msg('clientMsg',e.message||'No se pudo enviar la solicitud. Intenta nuevamente.');
-  }
-
- }finally{
-  $('submitBtn').disabled=false;
-  $('submitBtn').textContent='Enviar solicitud de reserva';
- }
+  if(file){const upload=await sb.storage.from('comprobantes').upload(path,file,{cacheControl:'3600',upsert:false,contentType:file.type||'application/octet-stream'});if(upload.error)throw upload.error;uploaded=true}
+  const {error}=await sb.rpc('crear_reserva_segura',{p_nombre:$('name').value.trim(),p_telefono:$('phone').value.trim(),p_direccion:$('address').value.trim()+' - '+$('commune').value.trim(),p_tipo_evento:$('event').value,p_fecha_evento:$('date').value,p_hora_evento:selected,p_horas_contratadas:duration(),p_comprobante_path:path,p_email:$('emailClient').value.trim(),p_valor_total:total,p_abono:deposit,p_observaciones:$('observations').value.trim()});
+  if(error)throw error;
+  msg('clientMsg','¡Solicitud enviada! Quedó pendiente de revisión.');['name','phone','emailClient','commune','address','total','observations'].forEach(id=>$(id).value='');$('deposit').value='0';$('proof').value='';await renderSlots();
+ }catch(e){console.error(e);if(uploaded)await sb.storage.from('comprobantes').remove([path]);if(e.message?.includes('HORARIO_NO_DISPONIBLE')){msg('clientMsg','Ese horario acaba de ser reservado. Por favor, elige otro.');await renderSlots()}else if(e.message?.includes('FUERA_DE_HORARIO'))msg('clientMsg','El horario elegido no está permitido.');else msg('clientMsg',e.message||'No se pudo enviar la solicitud. Intenta nuevamente.')}
+ finally{$('submitBtn').disabled=false;$('submitBtn').textContent='Enviar solicitud de reserva'}
 }
- async function login(){
- const email=$('email').value.trim();
- const password=$('password').value;
- const {data,error}=await sb.auth.signInWithPassword({email,password});
- if(error){
-  msg('loginMsg','No se pudo iniciar sesión. Revisa el correo y la contraseña.');
-  return;
- }
- if(data.user.email!=='eltrencitodelossuenos@gmail.com'){
-  await sb.auth.signOut();
-  msg('loginMsg','Este correo no tiene acceso de administración.');
-  return;
- }
- await checkSession();
-}
-async function checkSession(){const {data}=await sb.auth.getSession();const user=data.session?.user;if(user&&user.email==='eltrencitodelossuenos@gmail.com'){$('loginBox').classList.add('hidden');$('adminBox').classList.remove('hidden');$('signedInAs').textContent=user.email;await loadBookings()}else{$('loginBox').classList.remove('hidden');$('adminBox').classList.add('hidden')}}
+async function login(){const email=$('email').value.trim();const password=$('password').value;const {data,error}=await sb.auth.signInWithPassword({email,password});if(error){msg('loginMsg','No se pudo iniciar sesión. Revisa el correo y la contraseña.');return}if(data.user.email!==ADMIN){await sb.auth.signOut();msg('loginMsg','Este correo no tiene acceso de administración.');return}await checkSession()}
+async function checkSession(){const {data}=await sb.auth.getSession();const user=data.session?.user;if(user&&user.email===ADMIN){$('loginBox').classList.add('hidden');$('adminBox').classList.remove('hidden');$('signedInAs').textContent=user.email;await Promise.all([loadBookings(),loadTrash(),loadGalleryAdmin()])}else{$('loginBox').classList.remove('hidden');$('adminBox').classList.add('hidden')}}
 async function logout(){await sb.auth.signOut();checkSession()}
-async function loadBookings(){
- const {data,error}=await sb.from('reserva')
-  .select('*')
-  .order('created_at',{ascending:false});
-
- if(error){
-  $('bookingList').textContent='Error: '+error.message;
-  return;
- }
-
- const list=data||[];
- $('count').textContent=list.length;
- $('bookingList').innerHTML='';
-
- if(!list.length){
-  $('bookingList').innerHTML='<p class="small">Todavía no hay solicitudes.</p>';
-  return;
- }
-
- for(const b of list){
-  const el=document.createElement('div');
-  el.className='item';
-
-  const date=b.fecha_evento||'';
-  const time=b['hora evento']||'';
-  const hours=b['horas contratadas']||'';
-  const state=b.estado||'pendiente';
-
-  let proof='';
-  if(b.comprobante_path){
-   const {data:signed}=await sb.storage
-    .from('comprobantes')
-    .createSignedUrl(b.comprobante_path,300);
-
-   if(signed?.signedUrl){
-    proof=`<p><a href="${signed.signedUrl}" target="_blank" rel="noopener">Ver comprobante</a></p>`;
-   }
-  }
-
-  el.innerHTML=`
-   <div class="row">
-    <b>${esc(b.nombre)}</b>
-    <span class="pill ${state==='aprobada'?'ok':state==='rechazada'?'no':''}">${esc(state)}</span>
-   </div>
-   <p class="small">${esc(date)} · ${esc(time)} · ${esc(String(hours))} hora(s)</p>
-   <div>${esc(b.tipo_evento)}</div>
-   <div class="small">${esc(b.telefono)} · ${esc(b['direccion evento y comuna'])}</div>
-   <div>Abono: $${esc(b.abono)}</div>
-   ${proof}
-   <div class="actions">
-    <button class="btn" style="background:#17632e" ${state==='aprobada'?'disabled':''} onclick="setStatus('${b.id}','aprobada')">Aprobar abono</button>
-    <button class="btn" style="background:#8d2025" ${state==='rechazada'?'disabled':''} onclick="setStatus('${b.id}','rechazada')">Rechazar</button>
-   </div>`;
-  $('bookingList').appendChild(el);
- }
-}
+async function loadBookings(){const {data,error}=await sb.from('reserva').select('*').eq('eliminado',false).order('created_at',{ascending:false});if(error){$('bookingList').textContent='Error: '+error.message;return}const list=data||[];$('count').textContent=list.length;$('bookingList').innerHTML='';if(!list.length){$('bookingList').innerHTML='<p class="small">Todavía no hay solicitudes.</p>';return}for(const b of list){const el=document.createElement('div');el.className='item';const state=b.estado||'pendiente';let proof='';if(b.comprobante_path){const {data:signed}=await sb.storage.from('comprobantes').createSignedUrl(b.comprobante_path,300);if(signed?.signedUrl)proof=`<p><a href="${esc(signed.signedUrl)}" target="_blank" rel="noopener">Ver comprobante</a></p>`}el.innerHTML=`<div class="row"><b>${esc(b.nombre)}</b><span class="pill ${state==='aprobada'?'ok':state==='rechazada'?'no':''}">${esc(state)}</span></div><p class="small">${esc(b.fecha_evento||'')} · ${esc(b['hora evento']||'')} · ${esc(String(b['horas contratadas']||''))} hora(s)</p><div>${esc(b.tipo_evento)}</div><div class="small">${esc(b.telefono)} · ${esc(b.email||'Sin correo')} · ${esc(b['direccion evento y comuna'])}</div><div>Valor total: $${money(b['valor total'])} · Abono: $${money(b.abono)} · Saldo: $${money(b.saldo_pendiente)}</div>${b.observaciones?`<p>Observaciones: ${esc(b.observaciones)}</p>`:''}${proof}<div class="actions"><button class="btn" style="background:#17632e" ${state==='aprobada'?'disabled':''} onclick="setStatus('${b.id}','aprobada')">Aprobar</button><button class="btn" style="background:#8d2025" ${state==='rechazada'?'disabled':''} onclick="setStatus('${b.id}','rechazada')">Rechazar</button><button class="btn" style="background:#746d62" onclick="moveToTrash('${b.id}')">A papelera</button></div>`;$('bookingList').appendChild(el)}}
+function money(v){return Number(v||0).toLocaleString('es-CL')}
 async function setStatus(id,status){const {error}=await sb.from('reserva').update({estado:status}).eq('id',id);if(error){alert('No se pudo actualizar: '+error.message);return}await loadBookings();await renderSlots()}
+async function moveToTrash(id){if(!confirm('¿Mover esta reserva a la papelera? Podrás recuperarla después.'))return;const {error}=await sb.from('reserva').update({eliminado:true}).eq('id',id);if(error){alert('No se pudo mover a la papelera: '+error.message);return}await loadBookings();await loadTrash();await renderSlots()}
+async function loadTrash(){const {data,error}=await sb.from('reserva').select('*').eq('eliminado',true).order('created_at',{ascending:false});if(error){$('trashList').textContent='Error: '+error.message;return}const list=data||[];$('trashCount').textContent=list.length;$('trashList').innerHTML='';if(!list.length){$('trashList').innerHTML='<p class="small">La papelera está vacía.</p>';return}for(const b of list){const el=document.createElement('div');el.className='item';el.innerHTML=`<div class="row"><b>${esc(b.nombre)}</b><span class="pill no">En papelera</span></div><p class="small">${esc(b.fecha_evento)} · ${esc(b['hora evento'])} · ${esc(b.tipo_evento)}</p><div class="actions"><button class="btn" style="background:#17632e" onclick="restoreBooking('${b.id}')">Restaurar reserva</button></div>`;$('trashList').appendChild(el)}}
+async function restoreBooking(id){const {error}=await sb.from('reserva').update({eliminado:false}).eq('id',id);if(error){alert('No se pudo restaurar: '+error.message);return}await loadBookings();await loadTrash();await renderSlots()}
 function esc(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
-const today=new Date();$('date').min=localDate(today);$('date').value=$('date').min;$('date').addEventListener('change',renderSlots);$('duration').addEventListener('change',renderSlots);renderSlots();sb.auth.onAuthStateChange(()=>{if(!$('admin').classList.contains('hidden'))checkSession()});
-</script><script>if('serviceWorker'in navigator)navigator.serviceWorker.register('./sw.js').catch(()=>{});</script>
+function imageExt(file){return (file.name.split('.').pop()||'jpg').toLowerCase().replace(/[^a-z0-9]/g,'')}
+async function loadGalleryAdmin(){const {data,error}=await sb.storage.from('galeria').list('eventos',{limit:100,sortBy:{column:'created_at',order:'desc'}});if(error){$('adminGalleryList').textContent='No se pudo cargar la galería: '+error.message;return}renderGalleryItems(data||[],'adminGalleryList',true)}
+async function loadGalleryPublic(){const {data,error}=await sb.storage.from('galeria').list('eventos',{limit:100,sortBy:{column:'created_at',order:'desc'}});if(error){$('publicGalleryList').innerHTML='<p class="small">No se pudieron cargar las fotografías.</p>';return}renderGalleryItems(data||[],'publicGalleryList',false)}
+function renderGalleryItems(files,target,admin){const box=$(target);box.innerHTML='';const valid=files.filter(f=>f.name&&!f.name.startsWith('.'));if(!valid.length){box.innerHTML='<p class="small">Todavía no hay fotografías publicadas.</p>';return}valid.forEach(f=>{const path='eventos/'+f.name;const {data}=sb.storage.from('galeria').getPublicUrl(path);const card=document.createElement('div');card.className='gallery-card';const img=document.createElement('img');img.src=data.publicUrl;img.alt='Fotografía de un evento del Trencito de los Sueños';card.appendChild(img);if(admin){const del=document.createElement('button');del.className='btn';del.style.background='#8d2025';del.textContent='Eliminar foto';del.onclick=()=>deleteGalleryPhoto(path);card.appendChild(del)}box.appendChild(card)})}
+async function uploadGallery(){const files=[...$('galleryFiles').files];if(!files.length){msg('galleryAdminMsg','Selecciona al menos una fotografía.');return}for(const f of files){if(!['image/jpeg','image/png','image/webp'].includes(f.type)||f.size>5*1024*1024){msg('galleryAdminMsg','Cada fotografía debe ser JPG, PNG o WEBP y pesar máximo 5 MB.');return}}$('galleryAdminMsg').classList.add('hidden');for(const f of files){const path='eventos/'+crypto.randomUUID()+'.'+imageExt(f);const {error}=await sb.storage.from('galeria').upload(path,f,{upsert:false,contentType:f.type});if(error){msg('galleryAdminMsg','Error al subir '+f.name+': '+error.message);return}}$('galleryFiles').value='';msg('galleryAdminMsg','Fotografías subidas correctamente.');await loadGalleryAdmin();await loadGalleryPublic()}
+async function deleteGalleryPhoto(path){if(!confirm('¿Eliminar esta fotografía de la galería?'))return;const {error}=await sb.storage.from('galeria').remove([path]);if(error){alert('No se pudo eliminar: '+error.message);return}await loadGalleryAdmin();await loadGalleryPublic()}
+async function loadLogo(){const {data}=sb.storage.from('galeria').getPublicUrl('branding/logo');const img=$('logoCustom');img.onload=()=>{img.classList.add('visible');$('trainEmoji').classList.add('hidden')};img.onerror=()=>{img.classList.remove('visible');$('trainEmoji').classList.remove('hidden')};img.src=data.publicUrl+'?v='+Date.now()}
+async function uploadLogo(){const f=$('logoFile').files[0];if(!f){msg('logoMsg','Selecciona primero una imagen.');return}if(!['image/jpeg','image/png','image/webp'].includes(f.type)||f.size>5*1024*1024){msg('logoMsg','El logo debe ser JPG, PNG o WEBP y pesar máximo 5 MB.');return}const {error}=await sb.storage.from('galeria').upload('branding/logo',f,{upsert:true,contentType:f.type,cacheControl:'0'});if(error){msg('logoMsg','No se pudo guardar el logo: '+error.message);return}$('logoFile').value='';await loadLogo();msg('logoMsg','Logo actualizado correctamente.')}
+const today=new Date();$('date').min=localDate(today);$('date').value=$('date').min;$('date').addEventListener('change',renderSlots);$('duration').addEventListener('change',renderSlots);renderSlots();loadGalleryPublic();loadLogo();sb.auth.onAuthStateChange(()=>{if(!$('admin').classList.contains('hidden'))checkSession()});
+</script>
+<script>if('serviceWorker'in navigator)navigator.serviceWorker.register('./sw.js').catch(()=>{});</script>
 </body></html>
