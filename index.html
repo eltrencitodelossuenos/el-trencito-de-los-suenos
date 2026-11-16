@@ -87,80 +87,90 @@ return start < b + 30*60000 && end + 30*60000 > a;
 
 async function submitBooking(){
  const required=['name','phone','commune','address'];
+
  if(required.some(id=>!$(id).value.trim())||!$('date').value||!$('proof').files.length){
   msg('clientMsg','Completa tus datos, selecciona una fecha y adjunta el comprobante.');
   return;
  }
+
  if(!fitsBusinessHours(selected,duration())){
   msg('clientMsg','El horario elegido no alcanza a terminar antes de las 22:00.');
   return;
  }
- const busyCheck = await getBusy();
 
-if (busyCheck === null) {
-  msg('clientMsg','No se pudieron verificar los horarios. Intenta nuevamente.');
-  return;
-}
-
-const startCheck = new Date(`${$('date').value}T${selected}:00`).getTime();
-const endCheck = startCheck + duration() * 3600000;
-
-const conflict = busyCheck.some(r => {
-  const a = new Date(r.fecha_hora_inicio).getTime();
-  const b = a + Number(r.duracion_horas) * 3600000;
-  return startCheck < b + 30 * 60000 && endCheck + 30 * 60000 > a;
-});
-
-if (conflict) {
-  msg('clientMsg','Ese horario ya no está disponible. Elige otro horario.');
-  await renderSlots();
-  return;
-}
  const file=$('proof').files[0];
+
  if(file.size>5*1024*1024){
   msg('clientMsg','El comprobante supera los 5 MB.');
   return;
  }
+
  const ext=(file.name.split('.').pop()||'bin').toLowerCase().replace(/[^a-z0-9]/g,'');
  const path=`solicitudes/${crypto.randomUUID()}.${ext}`;
+
  $('submitBtn').disabled=true;
  $('submitBtn').textContent='Enviando solicitud...';
+
+ let uploaded=false;
+
  try{
   const upload=await sb.storage.from('comprobantes').upload(path,file,{
-   cacheControl:'3600',upsert:false,contentType:file.type||'application/octet-stream'
+   cacheControl:'3600',
+   upsert:false,
+   contentType:file.type||'application/octet-stream'
   });
+
   if(upload.error)throw upload.error;
+  uploaded=true;
 
-  const payload={
-   nombre:$('name').value.trim(),
-   telefono:$('phone').value.trim(),
-   "direccion evento y comuna":$('address').value.trim()+' - '+$('commune').value.trim(),
-   tipo_evento:$('event').value,
-   fecha_evento:$('date').value,
-   "hora evento":selected,
-   "horas contratadas":duration(),
-   abono:30000,
-   comprobante_path:path,
-   estado:'pendiente'
-  };
+  const {data,error}=await sb.rpc('crear_reserva_segura',{
+   p_nombre:$('name').value.trim(),
+   p_telefono:$('phone').value.trim(),
+   p_direccion:$('address').value.trim()+' - '+$('commune').value.trim(),
+   p_tipo_evento:$('event').value,
+   p_fecha_evento:$('date').value,
+   p_hora_evento:selected,
+   p_horas_contratadas:duration(),
+   p_comprobante_path:path
+  });
 
-  const {error}=await sb.from('reserva').insert(payload);
   if(error){
    await sb.storage.from('comprobantes').remove([path]);
+   uploaded=false;
    throw error;
   }
+
   msg('clientMsg','¡Solicitud enviada! Quedó pendiente de revisión.');
-  $('name').value=$('phone').value=$('commune').value=$('address').value='';
+
+  $('name').value='';
+  $('phone').value='';
+  $('commune').value='';
+  $('address').value='';
   $('proof').value='';
+
   await renderSlots();
+
  }catch(e){
   console.error(e);
-  msg('clientMsg',e.message||'No se pudo enviar la solicitud.');
+
+  if(uploaded){
+   await sb.storage.from('comprobantes').remove([path]);
+  }
+
+  if(e.message?.includes('HORARIO_NO_DISPONIBLE')){
+   msg('clientMsg','Ese horario acaba de ser reservado. Por favor, elige otro.');
+   await renderSlots();
+  }else if(e.message?.includes('FUERA_DE_HORARIO')){
+   msg('clientMsg','El horario elegido no está permitido.');
+  }else{
+   msg('clientMsg',e.message||'No se pudo enviar la solicitud. Intenta nuevamente.');
+  }
+
  }finally{
   $('submitBtn').disabled=false;
   $('submitBtn').textContent='Enviar solicitud de reserva';
  }
-} 
+}
  async function login(){
  const email=$('email').value.trim();
  const password=$('password').value;
