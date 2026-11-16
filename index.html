@@ -73,6 +73,7 @@ async function renderSlots(){
   const taken=busy.some(r=>{
    const a=new Date(r.fecha_hora_inicio).getTime();
    const b=a+Number(r.duracion_horas)*3600000;
+return start < b + 30*60000 && end + 30*60000 > a;
    return start<b&&end>a;
   });
   const btn=document.createElement('button');
