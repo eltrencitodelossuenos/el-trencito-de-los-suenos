@@ -95,6 +95,27 @@ async function submitBooking(){
   msg('clientMsg','El horario elegido no alcanza a terminar antes de las 22:00.');
   return;
  }
+ const busyCheck = await getBusy();
+
+if (busyCheck === null) {
+  msg('clientMsg','No se pudieron verificar los horarios. Intenta nuevamente.');
+  return;
+}
+
+const startCheck = new Date(`${$('date').value}T${selected}:00`).getTime();
+const endCheck = startCheck + duration() * 3600000;
+
+const conflict = busyCheck.some(r => {
+  const a = new Date(r.fecha_hora_inicio).getTime();
+  const b = a + Number(r.duracion_horas) * 3600000;
+  return startCheck < b + 30 * 60000 && endCheck + 30 * 60000 > a;
+});
+
+if (conflict) {
+  msg('clientMsg','Ese horario ya no está disponible. Elige otro horario.');
+  await renderSlots();
+  return;
+}
  const file=$('proof').files[0];
  if(file.size>5*1024*1024){
   msg('clientMsg','El comprobante supera los 5 MB.');
