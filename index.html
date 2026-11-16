@@ -96,6 +96,8 @@ async function submitBooking(){
   msg('clientMsg','El horario elegido no alcanza a terminar antes de las 22:00.');
   return;
  }
+ const b=a+Number(r.duracion_horas)*3600000;
+return start < b + 30*60000 && end + 30*60000 > a;
  const file=$('proof').files[0];
  if(file.size>5*1024*1024){
   msg('clientMsg','El comprobante supera los 5 MB.');
